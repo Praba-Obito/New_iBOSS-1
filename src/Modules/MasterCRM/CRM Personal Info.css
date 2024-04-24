@@ -1,0 +1,56 @@
+.placebox {
+    border: none;
+    border-bottom: 1px solid #000;
+    width: 100%;
+    transition: border-color 0.15s ease-in-out;
+}
+
+.placebox::placeholder {
+    width: 100% !important;
+}
+.top_menu{
+    display: flex;
+    justify-content: space-between;
+}
+select {
+    width: auto;
+    border: none !important;
+    border-bottom: 1px solid #000 !important;
+    border-radius: 0 !important;
+}
+
+select.form-select:focus {
+    outline: none;
+}
+.form-group{
+    width: auto;
+}
+.form-label {
+    margin-top: 0px !important;
+    margin-bottom: 8px !important;
+}
+
+.form-select {
+    padding: 1px 0px !important;
+    color: #838181;
+    margin-top: 5px !important;
+    width: 100% !important;
+    max-width: 400px !important;
+}
+
+.modal-body input[type="text"] {
+    border: none !important;
+    border-bottom: 1px solid #000 !important;
+    border-radius: 0 !important;
+    padding: 0 0.75rem !important;
+}
+
+.modal-body input[type="text"]:focus {
+    border-bottom-color: #000;
+    box-shadow: none !important;
+}
+
+.text_bar {
+    width: 100%;
+    max-width: 400px;
+}

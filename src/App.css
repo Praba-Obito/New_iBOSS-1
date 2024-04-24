@@ -1,0 +1,21 @@
+body{
+  background-color: #ededed;
+}
+  /* Topnavbar */
+  .top-navbar {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+  
+  /* Menu */
+  .menu {
+    position: fixed !important;
+    top: 56px; /* Adjust this value if necessary to accommodate the top navbar height */
+    left: 0;
+    bottom: 40px; /* Adjust this value if necessary to accommodate the layout footer height */
+    z-index: 1000;
+    overflow-y: auto; /* Enable vertical scrolling if needed */
+  }

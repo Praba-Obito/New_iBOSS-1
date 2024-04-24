@@ -1,0 +1,288 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #22668d;
+}
+.container {
+  margin: 0px;
+  width: 100%;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.logo-effect {
+  transition: transform 0.3s ease-in-out;
+}
+
+@media screen and (max-width: 426px) {
+  .logo-effect {
+    width: 100px!important;
+    height: 60px!important;
+  }
+}
+
+@media (max-width: 585px) {
+  .mb-3,
+  .bi-search {
+    display: none !important;
+    ;
+  }
+}
+
+.navbar {
+  padding: 0px;
+}
+
+/* tool-tip */
+.user_icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center!important;
+  /* top: 25px;
+  right: 10px; */
+}
+.welcome-content{
+  color: #fff;
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%; 
+  justify-content: center;                                                                                                                                  
+  /* top: 10px;
+ left: 500px ; */
+}
+.tooltip {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  margin-left: -50px;
+
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.user_icon:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+@media screen and (max-width: 1005px) {
+  .mb-3 {
+    display: none !important;
+  }
+}
+@media screen and (max-width: 426px) {
+  .user_icon{
+    bottom: 20px !important;
+  }
+}
+@media screen and (max-width: 585px) {
+  .welcome-content{
+    display: block;
+    text-align: center;
+    font-size: small;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+  }
+}
+@media screen and (max-width: 335px) {
+  .welcome-content{
+    display: none !important;
+  }
+}
+
+/* Style for the search bar container */
+.mb-3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* width: 100%; */
+  margin: 0 auto; 
+
+  /* width: 40%;
+  margin: 0 auto;
+  margin-right: 5%;
+left: 500px; */
+
+}
+
+.form-control {
+  border-radius: 0;
+  margin-right: 0;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  color: #ffffff;
+  border-bottom: 2px solid #fff;
+}
+
+/* Set placeholder color to white */
+.form-control::placeholder {
+  color: #fff;
+}
+
+.form-control::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: transparent;
+  color: #ffffff !important;
+
+}
+
+.form-control:focus,
+.form-control:active {
+  background-color: transparent;
+  box-shadow: none;
+  border-bottom: 2px solid #fff;
+  color: #fff;
+}
+
+/* Style for the search button */
+#button-addon2 {
+  border: none;
+  margin-left: 8px;
+  color: #fff;
+  margin: 0;
+}
+
+/* Style for the search icon */
+#button-addon2:hover {
+  background-color: transparent;
+}
+
+/* Style for the search icon */
+.bi-search {
+  color: #fff !important;
+  transform: translateY(-50%);
+  font-size: 1em !important;
+}
+
+.custom-navbar {
+  background-color: #22668d !important;
+  height: 80px;
+}
+/* Add this CSS for responsive adjustments */
+@media screen and (max-width: 767px) {
+  .navbar-toggler {
+    display: block;
+  }
+  .navbar-collapse {
+    display: none;
+  }
+  .navbar-expand-lg .navbar-toggler {
+    display: inline-block;
+  }
+  .navbar-expand-lg .navbar-collapse {
+    display: flex !important;
+    flex-basis: auto;
+    width: 100%;
+    flex-grow: 1;
+  }
+}
+
+/* Add this CSS for square-shaped menu items */
+.nav-pills .nav-link {
+  border-radius: 0;
+}
+.selected-menu{
+  color: #fff;
+  font-size: larger;
+  bottom: 15px!important;
+}
+
+/* user_icon dropdown */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown-menu-list li {
+  padding: 8px 16px;
+}
+
+.dropdown-menu-list li a {
+  color: #333;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-menu-list li a:hover {
+  background-color: #f0f0f0;
+}
+
+.more{
+  width: 100px;
+  background-color: transparent;
+  color: #fff;
+  outline: none;
+  border: none;
+}
+.menu-path{
+  width: 500px;
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+.path{
+  font-size: 18px;
+  font-weight: 600;
+  font-family: "Raleway", sans-serif;
+  padding: 8px;
+  margin: 0;
+
+}
+.sec-path{
+  font-family: "Raleway", sans-serif;
+  padding: 8px;
+  margin: 0;
+}
+.logo {
+  width: 120px;
+  height: 80%;
+  margin-right: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.logo-container {
+  display: flex;
+  align-items: center;
+  width: 60vw ;
+  height: 80px;
+  margin-left: 10px;
+  cursor: pointer;
+}

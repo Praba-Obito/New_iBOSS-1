@@ -1,0 +1,189 @@
+.step-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 10px;
+}
+
+.step-btn.completed {
+    background: green;
+}
+
+.step-btn:hover {
+    background: #007bff;
+}
+
+.custom-input {
+    width: 100%;
+    padding: 10px;
+    height: 40px;
+    border: none;
+    border-bottom: 1px solid #414142 !important;
+    border-radius: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.custom-input::placeholder {
+    color: #999;
+}
+
+.custom-input:focus {
+    outline: none;
+    border-bottom-color: #007bff;
+}
+
+.custom_label {
+    display: inline-block;
+    width: 150px;
+    /* Adjust the width as needed */
+    text-align: left;
+    margin-right: 10px;
+    /* Adjust the right margin as needed */
+}
+
+.custom_change {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 72% !important;
+}
+
+.custom-label {
+    display: flex;
+    margin-left: 75px;
+    margin-bottom: 0;
+}
+
+.step_name {
+    margin: 5px 0;
+}
+
+.text-center select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.text-center select::-ms-expand {
+    display: none;
+}
+
+.text-center input[type="text"],
+.text-center select {
+    width: 50%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    border: none;
+    border-bottom: 1px solid #414142 !important;
+    border-radius: 0;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+/* Style for dashes */
+.dashes {
+    margin-top: 15px;
+    margin-left: -10px;
+    margin-right: -5px;
+}
+
+.input-group-text {
+    cursor: pointer;
+    /* Add pointer cursor */
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+
+    /* Adjust the width of circles for smaller screens */
+    .step-btn {
+        width: 30px;
+        height: 30px;
+    }
+
+    .dashes {
+        margin-top: 5px;
+    }
+
+    .step_name {
+        margin: 3px 0;
+    }
+
+    .button.step-btn.completed,
+    .step_name {
+        font-size: 10px;
+    }
+
+    .dashes {
+        font-size: 5px;
+    }
+}
+
+.nav-link {
+    color: black !important;
+}
+
+.nav-link.active {
+    color: rgb(255, 255, 255) !important;
+    background-color: #22668d !important;
+}
+
+/* required */
+.custom-input {
+    border: none;
+    border-bottom: 1px solid #ced4da;
+    /* Default border color */
+    transition: border-bottom-color 0.2s ease-in-out;
+    /* Transition for smooth effect */
+}
+
+.custom-input:focus {
+    outline: none;
+    border-bottom-color: #007bff;
+    /* Change border color on focus */
+}
+
+.required {
+    border-bottom-color: red !important;
+    /* Change border color to red for required fields */
+}
+
+.remark_box {
+    border: 1px solid #000 !important;
+    width: 50%;
+    height: 100px;
+    text-wrap: wrap;
+}
+
+.custom-btn {
+    text-decoration: none;
+    color: #22668d;
+    font-weight: 500;
+}
+
+.custom-btn:focus {
+    text-decoration: none;
+    color: #22668d;
+}
+
+.custom-btn:hover {
+    color: #22668d;
+    text-decoration: none;
+}
+
+.contact-info-text {
+    margin-left: 5px;
+}
+
+.custom-green {
+    color: rgb(0, 128, 107);
+}
+
+.tab-container {
+    height: 850px auto;  
+    overflow-y: auto;
+    overflow-x: hidden;
+}
