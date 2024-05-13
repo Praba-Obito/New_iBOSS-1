@@ -9,12 +9,12 @@ const Layout = ({ children }) => {
     <div className="layout">
       <div className="content">{children}</div>
       <footer className="footer">
-        <div className="footer-content">
-          <p className="left">Copyright &copy; {currentYear} Financial Alliance Pte Ltd Co.</p>
-          <p className="right">Design & Developed by ThinkBig InfoTech</p>
+        <div className="footer-content row ">
+          <div className="col-6 left">Copyright &copy; {currentYear} Financial Alliance Pte Ltd Co.</div>
+          <div className="col-6 right">Design & Developed by ThinkBig InfoTech</div>
         </div>
       </footer>
-    </div>  
+    </div>
   );
 };
 

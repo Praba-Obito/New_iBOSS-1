@@ -1,162 +1,153 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-import ButtonGroup from '@mui/material/ButtonGroup';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import CloseIcon from '@mui/icons-material/Close';
-import Grid from '@mui/material/Grid';
+import './Menubar.css';
+import Topnavbar from '../Navbar/Topnavbar';
 
-import './Menubar.css'
+const Menubar = ({ open, onClose, path, setPath }) => {
+    const toggleDrawer = onClose;
+    const pathShow = (e) => {
+        setPath(e.target.innerText);
 
-const Menubar = () => {
-    const [state, setState] = React.useState({
-        top: false,
-    });
 
-    const toggleDrawer = (anchor, open) => (event) => {
-        if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-            return;
-        }
-
-        setState({ ...state, [anchor]: open });
     };
-
-    const list = (anchor) => (
+    const list = (
         <Box
             role="presentation"
-            onClick={toggleDrawer(anchor, false)}
-            onKeyDown={toggleDrawer(anchor, false)}
+            onClick={toggleDrawer}
+            onKeyDown={toggleDrawer}
             sx={{ position: 'relative' }}
         >
+            <Topnavbar />
             <div
                 style={{
                     position: 'absolute',
-                    top: 0,
+                    top: '80px',
                     left: 0,
                     width: '100%',
-                    height: '100%',
-                    backgroundColor: 'rgba(255, 255, 255, 0.1)', // Adjust opacity here
+                    height: 'calc(100% - 60px)',
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
                     pointerEvents: 'none',
                 }}
                 className="circle-overlay"
             />
-            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', p: 0, m: 0 }}>
-                <CloseIcon onClick={toggleDrawer(anchor, false)} sx={{ cursor: 'pointer' }} />
+            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', p: 0, m: 0, }}>
+                <CloseIcon onClick={toggleDrawer}
+                    sx={{ cursor: 'pointer', transition: 'color 0.3s' }}
+                    className="close-icon" />
             </Box>
-<br />
-            <div className="container-fluid">
-                <div className="row">
-                    <div className="col-xs-12 col-sm-6 col-md-3 col-lg-2 offset-1">
-                        <Typography style={{ marginBottom: '20px', cursor: 'pointer', color: '#22668d', fontWeight: '550' }}>Dashboard</Typography>
-                        <Typography style={{ marginBottom: '20px', cursor: 'pointer', color: '#22668d', fontWeight: '550' }}>FAR Info</Typography>
-                        <Typography style={{ marginBottom: '20px', cursor: 'pointer', color: '#22668d', fontWeight: '550' }}>Report</Typography>
-                        <Typography style={{ marginBottom: '20px', cursor: 'pointer', color: '#22668d', fontWeight: '550' }}>Event Mgt</Typography>
-                        <Typography style={{ marginBottom: '20px', cursor: 'pointer', color: '#22668d', fontWeight: '550' }}>Customer Servicing</Typography>
-                    </div>
 
-                    <div className="col-xs-12 col-sm-6 col-md-3 col-lg-2">
-                        <Typography style={{ cursor: 'pointer', color: '#22668d', fontWeight: '550' }}>Policy Transfer</Typography>
-                        <ul style={{ listStyleType: 'none', paddingLeft: '0', margin: '0', marginTop: '10px', cursor: 'pointer', paddingLeft: '10px' }}>
-                            <li style={{ marginBottom: '10px' }}>Internal Transfer</li>
-                            <li style={{ marginBottom: '10px' }}>Bulk Transfer</li>
-                            <li style={{ marginBottom: '10px' }}>Awaiting Approve</li>
-                            <li style={{ marginBottom: '10px' }}>Success Transfer</li>
-                            <li style={{ marginBottom: '10px' }}>Inprocess Transfer</li>
-                        </ul>
-                    </div>
+            <br />
+            <div className="container-fluid" style={{ paddingLeft: '80px' }}>
+                <div className="row pl-5" style={{ display: 'flex', flexWrap: 'wrap' }}>
+                    <div className="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                        <Typography style={{ marginBottom: '20px', cursor: 'pointer', color: '#22668d', fontWeight: '550' }} onClick={pathShow}>Dashboard</Typography>
+                        <Typography style={{ marginBottom: '20px', cursor: 'pointer', color: '#22668d', fontWeight: '550' }} onClick={pathShow}>FAR Info</Typography>
+                        <Typography style={{ marginBottom: '20px', cursor: 'pointer', color: '#22668d', fontWeight: '550' }} onClick={pathShow}>Report</Typography>
+                        <Typography style={{ marginBottom: '20px', cursor: 'pointer', color: '#22668d', fontWeight: '550' }} onClick={pathShow}>Event Mgt</Typography>
+                        <Typography style={{ marginBottom: '20px', cursor: 'pointer', color: '#22668d', fontWeight: '550' }} onClick={pathShow}>Customer Servicing</Typography>
+                        <Typography style={{ marginBottom: '20px', cursor: 'pointer', color: '#22668d', fontWeight: '550' }} onClick={pathShow}>Compliance & Audit</Typography>
+                        <Typography style={{ marginBottom: '20px', cursor: 'pointer', color: '#22668d', fontWeight: '550' }} onClick={pathShow}>Centralized Data</Typography>
+                        <Typography style={{ marginBottom: '20px', cursor: 'pointer', color: '#22668d', fontWeight: '550' }} onClick={pathShow}>Dictionaries</Typography>
+                        <Typography style={{ marginBottom: '20px', cursor: 'pointer', color: '#22668d', fontWeight: '550' }} onClick={pathShow}>Settings</Typography>
+                        <Typography style={{ marginBottom: '20px', cursor: 'pointer', color: '#22668d', fontWeight: '550' }} onClick={pathShow}>Feedback</Typography>
 
-                    <div className="col-xs-12 col-sm-6 col-md-3 col-lg-2">
-                        <Typography style={{ cursor: 'pointer', color: '#22668d', fontWeight: '550' }}>Master Account</Typography>
+                    </div>
+                    <div className="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                        <Typography style={{ cursor: 'pointer', color: '#22668d', fontWeight: '550' }} onClick={pathShow}>Policy Transfer</Typography>
                         <ul style={{ listStyleType: 'none', paddingLeft: '0', margin: '0', marginTop: '10px', cursor: 'pointer', paddingLeft: '10px' }}>
-                            <li style={{ marginBottom: '10px' }}>Life Insurance</li>
-                            <li style={{ marginBottom: '10px' }}>General Insurance</li>
-                            <li style={{ marginBottom: '10px' }}>Group Insurance</li>
-                            <li style={{ marginBottom: '10px' }}>Investment</li>
-                            <li style={{ marginBottom: '10px' }}>Other Services</li>
+                            <li style={{ marginBottom: '10px' }} onClick={pathShow}>Internal Transfer</li>
+                            <li style={{ marginBottom: '10px' }} onClick={pathShow}>Bulk Transfer</li>
+                            <li style={{ marginBottom: '10px' }} onClick={pathShow}>Awaiting Approve</li>
+                            <li style={{ marginBottom: '10px' }} onClick={pathShow}>Success Transfer</li>
+                            <li style={{ marginBottom: '10px' }} onClick={pathShow}>Inprocess Transfer</li>
                         </ul>
                     </div>
 
-                    <div className="col-xs-12 col-sm-6 col-md-3 col-lg-2">
-                        <Typography style={{ cursor: 'pointer', color: '#22668d', fontWeight: '550' }}>Document Mgt.</Typography>
+                    <div className="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                        <Typography style={{ cursor: 'pointer', color: '#22668d', fontWeight: '550' }} onClick={pathShow}>Master CRM</Typography>
                         <ul style={{ listStyleType: 'none', paddingLeft: '0', margin: '0', marginTop: '10px', cursor: 'pointer', paddingLeft: '10px' }}>
-                            <li style={{ marginBottom: '10px' }}>AutoCUE</li>
-                            <li style={{ marginBottom: '10px' }}>DMP</li>
-                            <li style={{ marginBottom: '10px' }}>File Management</li>
-                            <li style={{ marginBottom: '10px' }}>View Documents</li>
+                            <li style={{ marginBottom: '10px' }} onClick={pathShow}>Master CRM Index</li>
+                            <li style={{ marginBottom: '10px' }} onClick={pathShow}>Audit Info</li>
+                            <li style={{ marginBottom: '10px' }} onClick={pathShow}>Update Address</li>
+                            <li style={{ marginBottom: '10px' }} onClick={pathShow}>Update Contact</li>
+                            <li style={{ marginBottom: '10px' }} onClick={pathShow}>AML Index</li>
+                            <li style={{ marginBottom: '10px' }} onClick={pathShow}>Consultant Change</li>
+                            <li style={{ marginBottom: '10px' }} onClick={pathShow}>Move Document</li>
+                        </ul>
+                    </div>
+                    <div className="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                        <Typography style={{ cursor: 'pointer', color: '#22668d', fontWeight: '550' }} onClick={pathShow}>Master Account</Typography>
+                        <ul style={{ listStyleType: 'none', paddingLeft: '0', margin: '0', marginTop: '10px', cursor: 'pointer', paddingLeft: '10px' }}>
+                            <li style={{ marginBottom: '10px' }} onClick={pathShow}>Life Insurance</li>
+                            <li style={{ marginBottom: '10px' }} onClick={pathShow}>General Insurance</li>
+                            <li style={{ marginBottom: '10px' }} onClick={pathShow}>Group Insurance</li>
+                            <li style={{ marginBottom: '10px' }} onClick={pathShow}>Investment</li>
+                            <li style={{ marginBottom: '10px' }} onClick={pathShow}>Other Services</li>
                         </ul>
                     </div>
 
-                    <div className="col-xs-12 col-sm-6 col-md-3 col-lg-2">
-                        <Typography style={{ cursor: 'pointer', color: '#22668d', fontWeight: '550' }}>Master CRM</Typography>
+                    <div className="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                        <Typography style={{ cursor: 'pointer', color: '#22668d', fontWeight: '550' }} onClick={pathShow}>Product Mgt.(Admin)</Typography>
                         <ul style={{ listStyleType: 'none', paddingLeft: '0', margin: '0', marginTop: '10px', cursor: 'pointer', paddingLeft: '10px' }}>
-                            <li style={{ marginBottom: '10px' }}>Master CRM Index</li>
-                            <li style={{ marginBottom: '10px' }}>Audit Info</li>
-                            <li style={{ marginBottom: '10px' }}>Update Address</li>
-                            <li style={{ marginBottom: '10px' }}>Update Contact</li>
-                            <li style={{ marginBottom: '10px' }}>AML Index</li>
-                            <li style={{ marginBottom: '10px' }}>Consultant Change</li>
-                            <li style={{ marginBottom: '10px' }}>Move Document</li>
+                            <li style={{ marginBottom: '10px' }} onClick={pathShow}>LI Product</li>
+                            <li style={{ marginBottom: '10px' }} onClick={pathShow}>GI Product</li>
+                            <li style={{ marginBottom: '10px' }} onClick={pathShow}>Group Product</li>
+                            <li style={{ marginBottom: '10px' }} onClick={pathShow}>Investment Product</li>
+                            <li style={{ marginBottom: '10px' }} onClick={pathShow}>ILP Product</li>
+                            <li style={{ marginBottom: '10px' }} onClick={pathShow}>Other product</li>
                         </ul>
                     </div>
-                </div>
-<br /> <br />
-                <div className="row">
-                    <div className="col-xs-12 col-sm-6 col-md-3 col-lg-2 offset-1">
-                        <Typography style={{ cursor: 'pointer', color: '#22668d', fontWeight: '550' }}>Biz Tran.Register</Typography>
+                    <div className="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                        <Typography style={{ cursor: 'pointer', color: '#22668d', fontWeight: '550' }} onClick={pathShow}>Biz Tran.Register</Typography>
                         <ul style={{ listStyleType: 'none', paddingLeft: '0', margin: '0', marginTop: '10px', cursor: 'pointer', paddingLeft: '10px' }}>
-                            <li style={{ marginBottom: '10px' }}>Life Insurance</li>
-                            <li style={{ marginBottom: '10px' }}>General Insurance</li>
-                            <li style={{ marginBottom: '10px' }}>Group Insurance</li>
-                            <li style={{ marginBottom: '10px' }}>Investment</li>
+                            <li style={{ marginBottom: '10px' }} onClick={pathShow}>Life Insurance</li>
+                            <li style={{ marginBottom: '10px' }} onClick={pathShow}>General Insurance</li>
+                            <li style={{ marginBottom: '10px' }} onClick={pathShow}>Group Insurance</li>
+                            <li style={{ marginBottom: '10px' }} onClick={pathShow}>Investment</li>
                         </ul>
+                        <div >
+                            <Typography style={{ cursor: 'pointer', color: '#22668d', fontWeight: '550' }} onClick={pathShow}>Document Mgt.</Typography>
+                            <ul style={{ listStyleType: 'none', paddingLeft: '0', margin: '0', marginTop: '10px', cursor: 'pointer', paddingLeft: '10px' }}>
+                                <li style={{ marginBottom: '10px' }} onClick={pathShow}>AutoCUE</li>
+                                <li style={{ marginBottom: '10px' }} onClick={pathShow}>DMP</li>
+                                <li style={{ marginBottom: '10px' }} onClick={pathShow}>File Management</li>
+                                <li style={{ marginBottom: '10px' }} onClick={pathShow}>View Documents</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div className="col-xs-12 col-sm-6 col-md-3 col-lg-2">
-                        <Typography style={{ cursor: 'pointer', color: '#22668d', fontWeight: '550' }}>Product Mgt.(Admin)</Typography>
-                        <ul style={{ listStyleType: 'none', paddingLeft: '0', margin: '0', marginTop: '10px', cursor: 'pointer', paddingLeft: '10px' }}>
-                            <li style={{ marginBottom: '10px' }}>LI Product</li>
-                            <li style={{ marginBottom: '10px' }}>GI Product</li>
-                            <li style={{ marginBottom: '10px' }}>Group Product</li>
-                            <li style={{ marginBottom: '10px' }}>Investment Product</li>
-                            <li style={{ marginBottom: '10px' }}>ILP Product</li>
-                            <li style={{ marginBottom: '10px' }}>Other product</li>
-                        </ul>
-                    </div>
-                    <div className="col-xs-12 col-sm-6 col-md-3 col-lg-2">
-                        <Typography style={{ marginBottom: '20px', cursor: 'pointer', color: '#22668d', fontWeight: '550' }}>Compliance & Audit</Typography>
-                        <Typography style={{ marginBottom: '20px', cursor: 'pointer', color: '#22668d', fontWeight: '550' }}>Centralized Data</Typography>
-                        <Typography style={{ marginBottom: '20px', cursor: 'pointer', color: '#22668d', fontWeight: '550' }}>Dictionaries</Typography>
-                        <Typography style={{ marginBottom: '20px', cursor: 'pointer', color: '#22668d', fontWeight: '550' }}>Settings</Typography>
-                        <Typography style={{ marginBottom: '20px', cursor: 'pointer', color: '#22668d', fontWeight: '550' }}>Feedback</Typography>
-                    </div>
-                    <div className="col-xs-12 col-sm-6 col-md-3 col-lg-2">
-                        <Typography style={{ marginBottom: '20px', cursor: 'pointer', color: '#22668d', fontWeight: '550' }}>eDOCU(FAR)</Typography>
-                        <Typography style={{ marginBottom: '20px', cursor: 'pointer', color: '#22668d', fontWeight: '550' }}>AutoSync LI</Typography>
-                        <Typography style={{ marginBottom: '20px', cursor: 'pointer', color: '#22668d', fontWeight: '550' }}>AutoSync INV</Typography>
-                        <Typography style={{ marginBottom: '20px', cursor: 'pointer', color: '#22668d', fontWeight: '550' }}>CommTrack</Typography>
-                        <Typography style={{ marginBottom: '20px', cursor: 'pointer', color: '#22668d', fontWeight: '550' }}>EFC</Typography>
-                        <Typography style={{ marginBottom: '20px', cursor: 'pointer', color: '#22668d', fontWeight: '550' }}>Event Mgt</Typography>
-                    </div>
+
+                    {/* <div className="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                        <Typography style={{ marginBottom: '20px', cursor: 'pointer', color: '#22668d', fontWeight: '550' }} onClick={pathShow}>Compliance & Audit</Typography>
+                        <Typography style={{ marginBottom: '20px', cursor: 'pointer', color: '#22668d', fontWeight: '550' }} onClick={pathShow}>Centralized Data</Typography>
+                        <Typography style={{ marginBottom: '20px', cursor: 'pointer', color: '#22668d', fontWeight: '550' }} onClick={pathShow}>Dictionaries</Typography>
+                        <Typography style={{ marginBottom: '20px', cursor: 'pointer', color: '#22668d', fontWeight: '550' }} onClick={pathShow}>Settings</Typography>
+                        <Typography style={{ marginBottom: '20px', cursor: 'pointer', color: '#22668d', fontWeight: '550' }} onClick={pathShow}>Feedback</Typography>
+                    </div> */}
                 </div>
             </div>
 
+
             <br />
         </Box>
+
     );
     return (
-        <React.Fragment>
-            <ButtonGroup variant="outlined">
-                <Button onClick={toggleDrawer('top', true)}>Menu</Button>
-            </ButtonGroup>
+        <div>
             <Drawer
                 anchor="top"
-                open={state['top']}
-                onClose={toggleDrawer('top', false)}
+                open={open}
+                onClose={toggleDrawer}
+                sx={{ zIndex: 1000 }}
             >
-                {list('top')}
+                {list}
             </Drawer>
-        </React.Fragment>
+        </div>
     );
 }
+
+
 
 export default Menubar;

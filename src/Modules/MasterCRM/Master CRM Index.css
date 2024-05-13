@@ -2,7 +2,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
- 
+}
+.table-responsive {
+  overflow-x: auto;
 }
 
 input.placebox.wide-input {
@@ -59,7 +61,6 @@ select {
   box-sizing: border-box;
   margin-left: 0;
   padding: 0px;
-
 }
 
 .wide-input {
@@ -83,10 +84,7 @@ select.form-select:focus {
 .bottom_button {
   width: auto;
 }
-
-
 @media only screen and (max-width:320px) {
-
   .info_button button,
   .submit_button button {
     font-size: 13px !important;
@@ -94,23 +92,42 @@ select.form-select:focus {
   }
 }
 
-@media only screen and (max-width:575px) {
-  .text_bt {
-    display: grid;
-    grid-template-columns: auto auto;
+@media only screen and (max-width: 1473px) {
+  .add_custombtn {
+    font-size: 10px !important;
   }
 }
-
-@media only screen and (max-width:425px) {
-  .text_bt {
-    display: grid;
-    grid-template-columns: auto;
+@media only screen and (max-width: 850px) {
+  .search-container {
+    width: 70%!important;
+  }
+}
+@media only screen and (max-width: 763px) {
+  .add_custombtn {
+   width: 90%;
+   font-size: smaller;
+  }
+  .custom_design{
+    font-size: smaller!important;
+  }
+}
+@media (max-width: 767.98px) {
+  .table-header {
+    font-size: 14px;
+  }
+}
+@media (max-width: 767.98px) {
+  .search-container {
+    flex-basis: calc(100% - 80px);
+    margin-right: 1rem;
+  }
+  .add_custombtn button {
+    font-size: 0.7rem;
   }
 }
 
 .modal-body input::placeholder {
   color: #999;
-  /* Placeholder text color */
 }
 
 .modal-body input[type="text"] {
@@ -140,3 +157,48 @@ select.form-select:focus {
 .dropdown-menu {
   --bs-dropdown-min-width: 0rem ;
 }
+.dropdown-menu .dd-action:hover, 
+.dropdown-menu .dd-action:focus, 
+.dropdown-menu .dd-action:active {
+  background-color: #007bff !important;
+  color: #fff;
+}
+.dropdown-menu .dd-add-new:hover, 
+.dropdown-menu .dd-add-new:focus, 
+.dropdown-menu .dd-add-new:active {
+  background-color: green !important;
+  color: #fff;
+}
+.table-header {
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  padding: 12px 20px; 
+  border-radius: 8px; 
+  width: 20%;
+}
+.table-body td {
+  border: none;
+  padding: 12px 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.table-body tr {
+  border-bottom: 1px solid #ddd;
+}
+
+.table-body td {
+  padding: 8px 16px;
+  border: none;
+}
+.layout{
+  height: 0 !important;
+}
+
+
+
+
+ 
+
+
