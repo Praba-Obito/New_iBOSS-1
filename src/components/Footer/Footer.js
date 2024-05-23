@@ -1,21 +1,19 @@
+// Footer.js
+
 import React from 'react';
-import './Footer.css';
+import './footer.css';
 
-
-const Layout = ({ children }) => {
+const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <div className="layout">
-      <div className="content">{children}</div>
-      <footer className="footer">
-        <div className="footer-content row ">
-          <div className="col-6 left">Copyright &copy; {currentYear} Financial Alliance Pte Ltd Co.</div>
-          <div className="col-6 right">Design & Developed by ThinkBig InfoTech</div>
-        </div>
-      </footer>
-    </div>
+    <footer className="footer">
+      <div className="footer-content">
+        <div className="left">Copyright &copy; {currentYear} Financial Alliance Pte Ltd Co.</div>
+        <div className="right">Designed & Developed by ThinkBig InfoTech</div>
+      </div>
+    </footer>
   );
 };
 
-export default Layout;
+export default Footer;

@@ -1,5 +1,11 @@
+.container {
+  background-color: #f0f0f0c5;
+  padding: 20px;
+}
+
 *{
     box-shadow: none!important;
+
 }
 .modal-dialog {
   max-width: 1200px !important; 
@@ -10,6 +16,8 @@
 .modal-content {
   height: 90%;
   overflow-y: auto;
+  background-color: #f0f0f0;
+ 
 }
 .modal-header-custom {
   background-color: #22668d;
@@ -162,6 +170,7 @@
     display: flex;
     align-items: center;
     justify-content:center;
+    overflow-y: scroll; 
 }
 .custom-modal .modal-dialog {
     max-width: 70%; 
@@ -312,4 +321,29 @@
 .nav-tabs{
   margin-bottom: 0 !important;
   border-bottom: 1px solid #22668d !important;
+}
+.popup-bc{
+  background-color: #fff;
+  border-radius: 10px;
+}
+.custom_bc{
+  background-color: #f0f0f0c5;
+}
+.contact-info-container {
+  background-color: white; 
+  padding: 10px; 
+  border-radius: 10px; 
+  margin-top: 15px; 
+}
+.content-container{
+  background-color: white; 
+  padding: 10px; 
+  border-radius: 10px; 
+  margin-top: 15px; 
+}
+.address-header{
+  background-color: #fff;
+  margin-top: 15px;
+  padding: 10px 10px 10px 12px;
+  border-radius: 10px; 
 }

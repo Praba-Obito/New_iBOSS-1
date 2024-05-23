@@ -1,0 +1,111 @@
+.FilterHead{
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+.menubtn{
+    border:none;
+    outline: none;
+    background-color: #fff;
+    text-align: left;
+    font-size: 16px;
+    padding-left:15px !important ; 
+    display: flex;
+    flex:1;
+    justify-content: space-between;
+    align-items: center;
+}
+.menubtn:hover{
+    color: #fff;
+    background-color: #22668d;
+}
+.menubtn input{
+    color: #fff;
+    
+}
+.offcanvas-header {
+    padding :17px 15px 15px 15px !important;
+}
+.divider{
+    width: 400px;
+    margin: 0 0 15px 0;
+}
+.sec-divider{
+    width: 400px;
+    margin: 15px 0 0px 0;
+}
+
+.offcanvas-body{
+    height: 940px;
+}
+.offcanvas-backdrop{
+    background-color: transparent ;
+}
+.content{
+    width: 400px;
+}
+.filterbtn{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 5px;
+}
+
+.submitbtn{
+flex-basis: 50%;
+  color: #59A96A;
+  font-size: 16px ;
+  font-weight: 500;
+  background-color: transparent;
+  border-radius: 5px;
+  border: 1px solid #59A96A;
+  outline: none;
+  margin-left:5px ;
+  padding: 3px 10px;
+  transition: background-color 1s ease;
+  transition: color 1s ease;
+  
+}
+.submitbtn:hover{
+    color: #fff;
+    background-color: #59A96A ;
+}
+.clearbtn{
+    flex-basis: 50%;
+    color: #D63230;
+    font-size: 16px ;
+    font-weight: 500;
+    background-color: transparent;
+    border-radius: 5px;
+    border: 1px solid #D63230;
+    outline: none;
+    margin:0px 5px ;
+    padding: 3px 10px;
+    transition: background-color 1s ease;
+    transition: color 1s ease;
+    
+}   
+.clearbtn:hover{
+    color: #fff;
+    background-color: #D63230;
+    
+}
+.custom-checkbox{
+    display: flex;
+    justify-self:center;
+    align-items: center;
+}
+
+.overflow-container{
+    height: 900px;
+    overflow: auto;
+}
+.input-dates{
+    margin-top: 5px;
+}
+.inputdate-title{
+    margin: 0px 0px 0px 5px;
+}
+.date{
+    display: flex;  
+}
+

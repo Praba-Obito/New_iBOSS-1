@@ -18,13 +18,13 @@ const Menubar = ({ open, onClose, path, setPath }) => {
             role="presentation"
             onClick={toggleDrawer}
             onKeyDown={toggleDrawer}
-            sx={{ position: 'relative' }}
+            sx={{ position: 'relative', marginTop:'85px' }}
         >
             <Topnavbar />
             <div
                 style={{
                     position: 'absolute',
-                    top: '80px',
+                    top: '60px',
                     left: 0,
                     width: '100%',
                     height: 'calc(100% - 60px)',

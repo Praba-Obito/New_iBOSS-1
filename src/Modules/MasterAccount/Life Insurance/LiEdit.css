@@ -1,0 +1,10 @@
+
+.title{
+    padding-left: 300px;
+    display: flex;
+    align-items: center;
+}
+.title span:first-child{
+    font-weight: 500;
+    padding-right: 7px;
+}

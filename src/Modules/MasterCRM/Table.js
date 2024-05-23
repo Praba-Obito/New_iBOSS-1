@@ -1,220 +1,100 @@
-import * as React from "react";
-import Paper from "@mui/material/Paper";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TablePagination from "@mui/material/TablePagination";
-import TableRow from "@mui/material/TableRow";
-import { TextField } from "@mui/material";
-import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
+import React, { useState } from 'react';
+import { DataGrid } from '@mui/x-data-grid';
+import { IconButton, Menu, MenuItem, InputAdornment, TextField } from '@mui/material';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 import "./ReportTable.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+
+
+const initialRows = [
+  { id: 1, AIClient: 123456, OIClient: '06-May-2024', PEP: 'HSBC Life', CDDDateofSearch: 'China Life SaveForward Plan', CDDNumberofHit: 'Financial Alliance Pte Ltd', CDDOutcome: 'S0123432Z', ECDDOutcome: 'Test Chow Keng' },
+  { id: 2, AIClient: 100054, OIClient: '10-Jun-2024', PEP: 'ITC', CDDDateofSearch: 'Hindustan Uniliever', CDDNumberofHit: 'Financial Alliance', CDDOutcome: 'S8765432Z', ECDDOutcome: 'Test Chow Keng' },
+  { id: 3, AIClient: 199956, OIClient: '26-Apr-2024', PEP: 'HSB', CDDDateofSearch: 'ITC Product', CDDNumberofHit: 'FAPL', CDDOutcome: 'SAK50132Z', ECDDOutcome: 'Test Chow Keng' },
+];
 
 const columns = [
-  { id: "AIClient", label: "AI Client", maxWidth: "auto", fontWeight: '600 !important' },
-  { id: "OIClient", label: "OI Client", maxWidth: "100px" },
-  { id: "PEP", label: "PEP", maxWidth: 170 },
-  { id: "CDDDateofSearch", label: "CDD Date of Search", maxWidth: 170 },
-  { id: "CDDNumberofHit", label: "CDD Number of Hit", maxWidth: 170 },
-  { id: "CDDOutcome", label: "CDD Outcome", maxWidth: 170 },
-  { id: "ECDDOutcome", label: "ECDD Outcome", maxWidth: 170 },
-  { id: "Action", label: "Action", maxWidth: 170 },
+  { field: 'AIClient', headerName: 'AI Client', width: 150, sortable: true },
+  { field: 'OIClient', headerName: 'OI Client', width: 170, sortable: true },
+  { field: 'PEP', headerName: 'PEP', width: 120, sortable: true },
+  { field: 'CDDDateofSearch', headerName: 'CDD Date of Search', width: 270, sortable: true },
+  { field: 'CDDNumberofHit', headerName: 'CDD Number of Hit', width: 250, sortable: true },
+  { field: 'CDDOutcome', headerName: 'CDD Outcome', width: 150, sortable: true },
+  { field: 'ECDDOutcome', headerName: 'ECDD Outcome', width: 200, sortable: true },
+  { field: 'Action', headerName: 'Action', width: 100, renderCell: (params) => <ActionCell {...params} /> },
 ];
 
-function createData(
-  AIClient,
-  OIClient,
-  PEP,
-  CDDDateofSearch,
-  CDDNumberofHit,
-  CDDOutcome,
-  ECDDOutcome,
-  Action
-) {
-  return {
-    AIClient,
-    OIClient,
-    PEP,
-    CDDDateofSearch,
-    CDDNumberofHit,
-    CDDOutcome,
-    ECDDOutcome,
-    Action
-  };
-}
+function ActionCell(params) {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
 
-const rows = [
-  createData(
-    87685,
-    "06/08/2024",
-    "HSBC Life",
-    "China Life SaveForward Endowment Plan",
-    "Financial Alliance Pte Ltd",
-    "S8765432Z",
-    "Test Chow Keng",
-  ),
-  createData(
-    87685,
-    "06/08/2024",
-    "HSBC Life",
-    "China Life SaveForward Endowment Plan",
-    "Financial Alliance Pte Ltd",
-    "S8765432Z",
-    "Test Chow Keng",
-  ),
-  
-];
-
-function ColumnGroupingTable({ value, onChange }) {
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  // const [anchorEl, setAnchorEl] = React.useState(null);
-  const [search, setSearch] = React.useState('');
-  const [filteredRows, setFilteredRows] = React.useState(rows);
-
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
   };
 
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
+  const handleClose = () => {
+    setAnchorEl(null);
   };
-
-  // const handleMenuClose = () => {
-  //   setAnchorEl(null);
-  // };
-
-  // const handleMenuOpen = (event) => {
-  //   setAnchorEl(event.currentTarget);
-  // };
-  const handleSearch = (event) => {
-    const searchTerm = event.target.value.toLowerCase();
-    const filteredRows = rows.filter((row) => {
-      return columns.some((column) => {
-        const value = row[column.id];
-        return value && value.toString().toLowerCase().includes(searchTerm);
-      });
-    });
-    setFilteredRows(filteredRows);
-  };
-  
 
   return (
-    <Paper sx={{ width: "100%", marginTop: '35px'}}>
-      
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "flex-end",
-          alignItems: "center",
-          position: "sticky !important",
-          height: '25px', paddingBottom: "20px"
-        }}
+    <div>
+      <IconButton aria-controls="action-menu" aria-haspopup="true" onClick={handleClick}>
+        <MoreVertIcon />
+      </IconButton>
+      <Menu
+        id="action-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
       >
-        <div
-          className="td-search"
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <TextField
-            id="standard-basic"
-            label="Search"
-            variant="standard"
-            style={{
-              marginTop: "0px",
-              width: "230px",
-              paddingRight: "30px",
-            }}
-            InputProps={{
-              endAdornment: (
-                <SearchRoundedIcon style={{ color: "rgba(0, 0, 0, 0.54)", width: '24px', height: '26px' }} />
-              ),
-            }}
-            value={search}
-            onChange={handleSearch}
-          />
-        </div>
+        <MenuItem onClick={handleClose}>Option 1</MenuItem>
+        <MenuItem onClick={handleClose}>Option 2</MenuItem>
+        <MenuItem onClick={handleClose}>Option 3</MenuItem>
+      </Menu>
+    </div>
+  );
+}
+
+function ColumnGroupingTable() {
+  const [searchValue, setSearchValue] = useState('');
+  const [filteredRows, setFilteredRows] = useState(initialRows);
+
+  const handleSearchChange = (event) => {
+    const { value } = event.target;
+    setSearchValue(value);
+    filterRows(value);
+  };
+
+  const filterRows = (searchQuery) => {
+    const filtered = initialRows.filter(row => {
+      return Object.values(row).some(val =>
+        typeof val === 'string' && val.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    });
+    setFilteredRows(filtered);
+  };
+  const initialSortModel = columns.map(column => ({ field: column.field, sort: 'asc' }));
+
+  const [sortModel, setSortModel] = React.useState(initialSortModel);
+
+  return (
+    <div>
+      <div className="input-group search-container" >
+          <div className="search-container">
+            <input
+              type="search"
+              className="search-input"
+              placeholder="Type a Keyword..."
+              value={searchValue}
+              onChange={handleSearchChange}
+            />
+            <FontAwesomeIcon icon={faSearch} className="search-icon" />
+          </div>
       </div>
-      <TableContainer sx={{ marginTop: "10px" }}>
-        <Table stickyHeader aria-label="DataTable">
-          <TableHead >
-            <TableRow style={{ backgroundColor: "#f5f5f5", textAlign:'start' }}>
-              {columns.map((column) => (
-                <TableCell
-                  key={column.id}
-                  align={column.align}
-                  style={{
-                    minWidth: column.minWidth,
-                    fontWeight: "bold",
-                    color: "#333",
-                    border: "1px solid #ddd",
-                    borderBottom: "2px solid #ddd",
-                    padding: "12px"
-                  }}
-                >
-                  {column.label}
-                </TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody >
-            {rows
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row) => (
-                <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
-                  {columns.map((column) =>{
-                  const value = row[column.id];
-                  return (
-                    <TableCell
-                      key={column.id}
-                      align="center"
-                      style={{ padding: "12px", textAlign:"start" }}
-                    >
-                      {column.format && typeof value === "number"
-                        ? column.format(value)
-                        : value}
-                    </TableCell>
-                  )})}
-                </TableRow>
-              ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <TablePagination
-        rowsPerPageOptions={[10, 25, 50, 100]}
-        component="div"
-        count={filteredRows.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-        labelRowsPerPage={`Show Entities`}
-        labelDisplayedRows={({ from, to, count }) =>
-          `Showing ${from}-${to} of ${count} Entities`
-        }
-      />
-      <style>
-        {`
-    .css-pdct74-MuiTablePagination-selectLabel,
-    .css-levciy-MuiTablePagination-displayedRows {
-      margin-bottom: 0 !important;
-      display: flex;
-      align-items: center;
-      justify-content: space-between !important;
-    }
-    .css-pdct74-MuiTablePagination-actions{
-      display:flex;
-      align-items: center;
-      text-Align:flex-start;
-    }
-  `}
-      </style>
-    </Paper>
+      <div style={{ height: 'auto', width: '97%', marginTop: '15px', marginLeft: '20px' }}>
+        <DataGrid rows={filteredRows} columns={columns} sortModel={sortModel} onSortModelChange={setSortModel} classes={{ selectedRowCount: "hidden-selected-row-count" }} />
+      </div>
+    </div>
   );
 }
 

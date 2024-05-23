@@ -7,15 +7,17 @@ body {
 .App {
   text-align: center;
 }
-
+/* #00ffff , #008b8b   #28a745 ,  #007bff  */
 header {
   background: #22668d;
+  background: linear-gradient(266deg, #2d6788 0%, #22668d 51%, #002033 100%);
   color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
 }
+
 
 .logo {
   width: 120px;

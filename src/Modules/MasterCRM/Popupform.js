@@ -112,7 +112,7 @@ function Popupform() {
 
     return (
         <div>
-            <Button variant="secondary" onClick={handleShow} style={{ marginBottom: '0px' }}>
+            <Button variant="secondary" onClick={handleShow} style={{ marginBottom: '5px' }}>
                 Add New +
             </Button>
 
@@ -123,20 +123,20 @@ function Popupform() {
                 keyboard={false}
                 centered
                 size="xl" style={{
-                    width: '73%', maxHeight: '100%', marginLeft: '13%',
+                    width: '74%', maxHeight: '100%', marginLeft: '13%',
                     overflow: 'hidden'
                 }}
             >
-                <Modal.Header style={{ backgroundColor: '#22668d', color: '#fff' }}>
+                <Modal.Header style={{ background: 'linear-gradient(45deg, #1ed7d7, #099e9e)', color: '#fff' }}>
                     <Modal.Title>Compliance</Modal.Title>
                     <CloseButton onClick={() => setShow(false)} aria-label="Close" variant="white" />
                 </Modal.Header>
-                <Modal.Body style={{ maxHeight: '70vh', overflowY: 'auto', overflowX: 'hidden', paddingRight: '60px' }}>
-                    <div>
+                <Modal.Body style={{ maxHeight: '70vh', overflowY: 'auto', overflowX: 'hidden', }}>
+                    <div className='content-container'>
                         <div className="d-flex align-items-center justify-content-between">
                             <div>
                                 <button
-                                    className="btn btn-link custom-btn"
+                                    className="btn btn-link custom-btn ps-0"
                                     onClick={toggleFirstContentVisibility}
                                     aria-expanded={isFirstContentVisible ? "true" : "false"}
                                     aria-controls="eduInfoContent"
@@ -146,13 +146,12 @@ function Popupform() {
                                 </button>
                             </div>
                         </div>
-                        <hr style={{ borderTop: '2px solid #000000', width: '100%', marginTop: '-5px', marginBottom: '0.5rem', marginLeft: '30px' }} />
                         {isFirstContentVisible && (
-                            <div className="row ms-5">
-                                <div className='col-3 p-0'>
-                                    <div className="dnc-label-container">
+                            <div className="row ms-4">
+                                <div className='col-2 p-0'>
+                                    <div className="dnc-label-container ms-4">
                                         <label className="custom_label">DNC</label>
-                                        <div className="radio-buttons">
+                                        <div className="radio-buttons" >
                                             <div>
                                                 <label htmlFor="yes" className="round-radio">Yes</label>
                                                 <input
@@ -178,7 +177,7 @@ function Popupform() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="effective-date-container col-3 p-0">
+                                <div className="effective-date-container col-3 pe-2" style={{marginRight:'100px'}}>
                                     <TextField
                                         id="effective date1"
                                         type="date"
@@ -193,11 +192,11 @@ function Popupform() {
                                         }}
                                     />
                                 </div>
-                                <div className='col-3 p-0 '>
-                                    <div className="dnc-label-container">
+                                <div className='col-2 p-0'>
+                                    <div className="dnc-label-container ">
                                         <label className="custom_label ms-5">DNC</label>
                                     </div>
-                                    <div className="radio-buttons ms-3">
+                                    <div className="radio-buttons ms-3"  >
                                         <div className='p-2'>
                                             <label htmlFor="yes" className="round-radio">Yes</label>
                                             <input
@@ -222,7 +221,7 @@ function Popupform() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-3 p-0">
+                                <div className="col-3 p-0 mt-2 pe-4">
                                     <TextField
                                         id="country"
                                         select
@@ -248,11 +247,11 @@ function Popupform() {
 
                         )}
                     </div>
-                    <div>
+                    <div className='content-container'>
                         <div className="d-flex align-items-center justify-content-between">
                             <div>
                                 <button
-                                    className="btn btn-link custom-btn"
+                                    className="btn btn-link custom-btn ps-0"
                                     onClick={toggleSecondContentVisibility}
                                     aria-expanded={isSecondContentVisible ? "true" : "false"}
                                     aria-controls="AddressContent"
@@ -283,7 +282,6 @@ function Popupform() {
                                 </span>
                             </div>
                         </div>
-                        <hr style={{ borderTop: '2px solid #000000', width: '100%', marginTop: '-5px', marginBottom: '0.5rem', marginLeft: '33px' }} />
                         {isSecondContentVisible && pepValue === 'yes' && (
                             <div className='row ms-4'>
                                 <div className='col-6'>
@@ -344,11 +342,11 @@ function Popupform() {
                             </div>
                         )}
                     </div>
-                    <div>
+                    <div className='content-container'>
                         <div className="d-flex align-items-center justify-content-between">
                             <div>
                                 <button
-                                    className="btn btn-link custom-btn"
+                                    className="btn btn-link custom-btn ps-0"
                                     onClick={toggleThirdContentVisibility}
                                     aria-expanded={isThirdContentVisible ? "true" : "false"}
                                     aria-controls="eduInfoContent"
@@ -358,11 +356,10 @@ function Popupform() {
                                 </button>
                             </div>
                         </div>
-                        <hr style={{ borderTop: '2px solid #000000', width: '100%', marginTop: '-5px', marginBottom: '0.5rem', marginLeft: '30px' }} />
                         {isThirdContentVisible && (
                             <div>
                                 <div className='row ms-4'>
-                                    <div className='col-6'>
+                                    <div className='col-5' style={{paddingRight:'25px'}}>
                                         <TextField
                                             id="cdd date of search"
                                             type="date"
@@ -409,7 +406,7 @@ function Popupform() {
                                             ))}
                                         </TextField>
                                     </div>
-                                    <div className='col-6'>
+                                    <div className='col-5 offset-1'style={{paddingRight:'25px'}}>
                                         <TextField
                                             id="cdd number of hits"
                                             type="search"
@@ -458,8 +455,8 @@ function Popupform() {
                                         </TextField>
                                     </div>
                                 </div>
-                                <div className='row ms-5 mt-1' style={{ width: '100%' }}>
-                                    <TextField className="col-12 mb-3" id="remarks"
+                                <div className='row mt-2 ' style={{ width: '91%', marginLeft:'45px' }}>
+                                    <TextField className="col-10 mb-3" id="remarks"
                                         label="Remarks" placeholder='Enter Remarks Here...' multiline rows={3} style={{ width: "96%", height: "100px" }}
                                         value={formData.remarks} onChange={handleInputChange}
                                     />
@@ -467,11 +464,11 @@ function Popupform() {
                             </div>
                         )}
                     </div>
-                    <div>
+                    <div className='content-container'>
                         <div className="d-flex align-items-center justify-content-between">
                             <div>
                                 <button
-                                    className="btn btn-link custom-btn"
+                                    className="btn btn-link custom-btn ps-0"
                                     onClick={toggleFourthContentVisibility}
                                     aria-expanded={isFourthContentVisible ? "true" : "false"}
                                     aria-controls="eduInfoContent"
@@ -481,11 +478,10 @@ function Popupform() {
                                 </button>
                             </div>
                         </div>
-                        <hr style={{ borderTop: '2px solid #000000', width: '100%', marginTop: '-5px', marginBottom: '0.5rem', marginLeft: '30px' }} />
                         {isFourthContentVisible && (
                             <div>
                                 <div className='row ms-4'>
-                                    <div className='col-6'>
+                                    <div className='col-5 me-2'>
                                         <TextField
                                             id="ecdd date of search"
                                             type="date"
@@ -564,7 +560,7 @@ function Popupform() {
                                             ))}
                                         </TextField>
                                     </div>
-                                    <div className='col-6'>
+                                    <div className='col-5 offset-1'style={{paddingRight:'25px'}}>
                                         <TextField
                                             id="ecdd date of Verification"
                                             type="date"
@@ -669,8 +665,8 @@ function Popupform() {
                                         </TextField>
                                     </div>
                                 </div>
-                                <div className='row ms-5 mt-1' style={{ width: '100%' }}>
-                                    <TextField className="col-12 mb-3" id="remarks"
+                                <div className='row  mt-1' style={{ width: '92%', marginLeft:'40px' }}>
+                                    <TextField className="col-10 mb-3" id="remarks"
                                         label="ECDD Additional Comments" placeholder='Enter ECDD Additional Comments...' multiline rows={3} style={{ width: "96%", height: "100px" }}
                                         value={formData.remarks} onChange={handleInputChange}
                                     />

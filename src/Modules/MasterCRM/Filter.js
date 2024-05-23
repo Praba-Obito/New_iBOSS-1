@@ -27,6 +27,10 @@ const consultant = [
 
 const Filter = ({ showFilter, setShowFilter }) => {
 
+    const handleSubmit = () => {
+        setShowFilter(false);
+    }
+
     return (
         <>
             {[false].map((expand) => (
@@ -36,7 +40,7 @@ const Filter = ({ showFilter, setShowFilter }) => {
                         className="d-flex justify-content-end"
                         style={{ backgroundColor: "#fff" }}
                     >
-                        
+
 
                         <Navbar.Offcanvas
                             id={`offcanvasNavbar-expand-${expand}`}
@@ -62,7 +66,7 @@ const Filter = ({ showFilter, setShowFilter }) => {
                                 <hr className="divider" />
                                 <span className="filterbtn">
                                     <button className="clearbtn"> clear </button>
-                                    <button className="submitbtn"> submit </button>
+                                    <button className="submitbtn" onClick={handleSubmit}> submit </button>
                                 </span>
                                 <hr className="sec-divider" />
                                 <div className="overflow-container ">
@@ -124,6 +128,11 @@ const Filter = ({ showFilter, setShowFilter }) => {
                                             style={{ width: "90%", margin: "6px 8px" }}
                                         />
                                     </Offcanvas.Body>
+                                    <hr className="divider" />
+                                    <span className="filterbtn justify-content-center">
+                                        <button className="exportbtn"> Export </button>
+                                    </span>
+                                    <hr className="sec-divider" />
                                 </div>
                             </div>
                         </Navbar.Offcanvas>

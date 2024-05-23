@@ -6,13 +6,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Tabs, { tabsClasses } from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
+import './AddCRMForm.css';
 import ColumnGroupingTable from './Table.js';
 import Popupform from './Popupform.js';
 import InsertTable from './InsertTable.js';
 import UpdateTable from './UpdateTable.js';
 import DelTable from './DelTable.js';
 import AutoSyncTable from './AutoSyncTable.js';
-import './AddCRMForm.css';
 
 
 
@@ -22,7 +22,6 @@ const AddCRMForm = ({ show, setShowAddCRMForm }) => {
     const ariaLabel = { 'aria-label': 'description' };
     const [searchTerm, setSearchTerm] = useState('');
     const [showModal, setShowModal] = useState(true);
-    // const [value, setValue] = React.useState(0);
 
     const [formData, setFormData] = useState({
         field1: '',
@@ -68,10 +67,8 @@ const AddCRMForm = ({ show, setShowAddCRMForm }) => {
         field17Date: '',
         phoneNumber: '',
         countryCode: ''
-        // Add more fields as needed for each step
-    });
 
-    // Define your step names array
+    });
     const stepNames = [
         "Add Personal Info",
         "Contact Info",
@@ -106,13 +103,6 @@ const AddCRMForm = ({ show, setShowAddCRMForm }) => {
         setActiveTab(0);
         setShowAddCRMForm(false);
     };
-
-    // const handleStepClick = (nextStep) => {
-    //     if (activeTab < nextStep) {
-    //         setActiveTab(nextStep);
-    //     }
-    // };
-
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -126,17 +116,7 @@ const AddCRMForm = ({ show, setShowAddCRMForm }) => {
             setActiveTab(activeTab - 1);
         }
     };
-    // const handlePhoneNumberChange = (event) => {
-    //     const { name, value } = event.target;
 
-    //     // Validate if the input is numeric
-    //     if (/^\d*$/.test(value) || value === '') {
-    //         setFormData(prevFormData => ({
-    //             ...prevFormData,
-    //             [name]: value
-    //         }));
-    //     }
-    // };
     const handleRadioChange = (fieldName, dateFieldName) => (e) => {
         e.stopPropagation();
         const { value } = e.target;
@@ -148,15 +128,12 @@ const AddCRMForm = ({ show, setShowAddCRMForm }) => {
     };
 
     useEffect(() => {
-        // Set initial state of the date field based on the default value of 'field6Dnc'
         const defaultDate = formData.field6Dnc === 'Yes' ? new Date().toISOString().split('T')[0] : '';
         setFormData(prevState => ({
             ...prevState,
             field6Date: defaultDate,
         }));
     }, [formData.field6Dnc]);
-
-
 
     const [isFirstContentVisible, setIsFirstContentVisible] = useState(true);
     const [isSecondContentVisible, setIsSecondContentVisible] = useState(true);
@@ -196,9 +173,6 @@ const AddCRMForm = ({ show, setShowAddCRMForm }) => {
         setIsMailingAddressVisible(!isMailingAddressVisible);
     };
 
-    // const isField3Required = () => {
-    //     return formData.field1 !== '' && formData.field2 === '';
-    // };
     const consultant = [
         {
             value: 'select',
@@ -471,8 +445,8 @@ const AddCRMForm = ({ show, setShowAddCRMForm }) => {
         switch (activeTab) {
             case 0:
                 return (
-                    <form className='text-center mt-4'>
-                        <div style={{ textAlign: 'start', paddingLeft: '50px' }}>
+                    <form className='popup-bc text-center mt-4 m-3 mb-0'>
+                        <div style={{ textAlign: 'start',padding:'20px 20px 20px 50px ' }}>
                             <div className="row pb-1">
                                 <div className="col-xl-8">
                                     <TextField
@@ -790,9 +764,9 @@ const AddCRMForm = ({ show, setShowAddCRMForm }) => {
                 );
             case 1:
                 return (
-                    <form className='text-center mt-4'>
-                        <div>
-                            <div className="d-flex align-items-center justify-content-between" >
+                    <form className='custom_bc text-center mt-4 m-3'>
+                        <div className='contact-info-container'>
+                            <div className=" d-flex align-items-center justify-content-between" >
                                 <div>
                                     <button
                                         className="btn btn-link custom-btn pb-0"
@@ -805,8 +779,6 @@ const AddCRMForm = ({ show, setShowAddCRMForm }) => {
                                     </button>
                                 </div>
                             </div>
-                            <hr style={{ borderTop: '2px solid #000000', width: '96%', marginTop: '0', marginBottom: '0.5rem', marginLeft: '35px' }} />
-
                             {isFirstContentVisible && (
                                 <div className="row">
                                     <div className="col-xl-6" style={{ paddingLeft: "50px", paddingRight: '0' }}>
@@ -1248,7 +1220,7 @@ const AddCRMForm = ({ show, setShowAddCRMForm }) => {
                             )}
                         </div>
                         <div>
-                            <div className="d-flex align-items-center justify-content-between" >
+                            <div className="address-header d-flex align-items-center justify-content-between" >
                                 <div>
                                     <button
                                         className="btn btn-link custom-btn pb-0"
@@ -1261,12 +1233,10 @@ const AddCRMForm = ({ show, setShowAddCRMForm }) => {
                                     </button>
                                 </div>
                             </div>
-                            <hr style={{ borderTop: '2px solid black', width: '96%', marginTop: '0', marginBottom: '0.5rem', marginLeft: '35px' }} />
-
                             {
                                 isSecondContentVisible && (
-                                    <div>
-                                        <div className="d-flex align-items-center justify-content-between  ml-3 ">
+                                    <div className='contact-info-container '>
+                                        <div className=" d-flex align-items-center justify-content-between  ml-3 ">
                                             <div style={{ marginLeft: '15px' }}>
                                                 <button
                                                     className="btn btn-link custom-btn pb-0"
@@ -1280,7 +1250,7 @@ const AddCRMForm = ({ show, setShowAddCRMForm }) => {
                                                 </button>
                                             </div>
                                         </div>
-                                        <hr style={{ borderTop: '2px solid black', width: '95%', marginTop: '0', marginBottom: '0.5rem', marginLeft: '45px' }} />
+
                                         {isLocalAddressVisible && (
                                             <div className="row nested-dropdown">
                                                 <div className="col-xl-4">
@@ -1379,8 +1349,8 @@ const AddCRMForm = ({ show, setShowAddCRMForm }) => {
 
                             {
                                 isSecondContentVisible && (
-                                    <div>
-                                        <div className="d-flex align-items-center justify-content-between ml-3 ">
+                                    <div className='contact-info-container'>
+                                        <div className=" d-flex align-items-center justify-content-between ml-3 ">
                                             <div style={{ marginLeft: '15px' }}>
                                                 <button
                                                     className="btn btn-link custom-btn pb-0"
@@ -1393,7 +1363,7 @@ const AddCRMForm = ({ show, setShowAddCRMForm }) => {
                                                 </button>
                                             </div>
                                         </div>
-                                        <hr style={{ borderTop: '2px solid black', width: '95%', marginTop: '0', marginBottom: '0', marginLeft: '45px' }} />
+
                                         {isOverseasAddressVisible && (
                                             <div className="row nested-dropdown">
                                                 <div className="col-xl-4">
@@ -1491,8 +1461,8 @@ const AddCRMForm = ({ show, setShowAddCRMForm }) => {
                             }
                             {
                                 isSecondContentVisible && (
-                                    <div>
-                                        <div className="d-flex align-items-center  ml-3">
+                                    <div className='contact-info-container'>
+                                        <div className=" d-flex align-items-center  ml-3">
                                             <div style={{ marginLeft: '15px' }}>
                                                 <button
                                                     className="btn btn-link custom-btn pb-0"
@@ -1551,7 +1521,7 @@ const AddCRMForm = ({ show, setShowAddCRMForm }) => {
                                             </div>
 
                                         </div>
-                                        <hr style={{ borderTop: '2px solid black', width: '95%', marginTop: '0', marginBottom: '0.5rem', marginLeft: '45px' }} />
+
                                         {isMailingAddressVisible && (
                                             <div className="row nested-dropdown">
                                                 <div className="col-xl-4">
@@ -1653,8 +1623,8 @@ const AddCRMForm = ({ show, setShowAddCRMForm }) => {
 
             case 2:
                 return (
-                    <form className='text-center mt-5'>
-                        <div>
+                    <form className=' text-center mt-4 m-3'>
+                        <div className='popup-bc p-2 '>
                             <div className="d-flex align-items-center justify-content-between" >
                                 <div>
                                     <button
@@ -1668,10 +1638,8 @@ const AddCRMForm = ({ show, setShowAddCRMForm }) => {
                                     </button>
                                 </div>
                             </div>
-                            <hr style={{ borderTop: '2px solid black', width: '96%', marginTop: '0', marginBottom: '0.5rem', marginLeft: '30px' }} />
-
                             {isFirstContentVisible && (
-                                <div className='row m-0 p-0'>
+                                <div className='row m-0 p-0 pb-3'>
                                     <div className='col-xl-4 p-0'>
                                         <TextField
                                             id="highest education"
@@ -1706,7 +1674,7 @@ const AddCRMForm = ({ show, setShowAddCRMForm }) => {
                             )}
                         </div>
 
-                        <div>
+                        <div className='content-container'>
                             <div className="d-flex align-items-center justify-content-between">
                                 <div>
                                     <button
@@ -1720,9 +1688,8 @@ const AddCRMForm = ({ show, setShowAddCRMForm }) => {
                                     </button>
                                 </div>
                             </div>
-                            <hr style={{ borderTop: '2px solid black', width: '96%', marginTop: '0', marginBottom: '0.5rem', marginLeft: '30px' }} />
                             {isSecondContentVisible && (
-                                <div>
+                                <div className='pb-3'>
                                     <div className='row'>
                                         <div className='col-8'>
                                             <TextField
@@ -1807,8 +1774,8 @@ const AddCRMForm = ({ show, setShowAddCRMForm }) => {
 
             case 3:
                 return (
-                    <div style={{ margin: '12px' }}>
-                        <form className='text-center  '>
+                    <div style={{ margin: '12px', paddingBottom: '10px' }} className='popup-bc content-container mt-4'>
+                        <form className='text-center'>
                             <div className="d-flex align-items-center justify-content-between">
 
                                 <button
@@ -1820,11 +1787,11 @@ const AddCRMForm = ({ show, setShowAddCRMForm }) => {
                                     <i className={`bi bi-caret-${isFirstContentVisible ? 'down' : 'right'}`}></i>
                                     <span className="education-info-text">Compliance Info</span>
                                 </button>
-                                <div style={{ padding: '0', margin: '0', paddingBottom: '5px' }}>
+                                <div style={{ padding: '5px', margin: '0', }}>
                                     <Popupform id="exampleModal1" />
                                 </div>
                             </div>
-                            <hr style={{ borderTop: '2px solid #000000', width: '98.5%', marginTop: '-5px', marginBottom: '0.5rem', marginLeft: '18px' }} />
+                           
                         </form>
 
 
@@ -1836,9 +1803,9 @@ const AddCRMForm = ({ show, setShowAddCRMForm }) => {
 
             case 4:
                 return (
-                    <div style={{ marginTop: '50px', marginLeft: '25px', marginBottom: '30px' }}>
-                        <label htmlFor="name">Name</label><br />
-                        <div className="search-boxes">
+                    <div style={{ margin: '30px 20px 30px 20px', backgroundColor: 'white',borderRadius: '5px' }}>
+                        <label htmlFor="name" style={{ padding: '10px', borderRadius: '5px' }}>Name</label><br />
+                        <div className="search-boxes ps-5 pb-5">
                             <input
                                 type="text"
                                 id="name"
@@ -1861,7 +1828,7 @@ const AddCRMForm = ({ show, setShowAddCRMForm }) => {
 
             case 5:
                 return (
-                    <form className='text-center mt-2'>
+                    <form className='content-container text-center mt-4 m-3'>
                         <div className="d-flex align-items-center justify-content-between pb-0 ">
                             <div>
                                 <button
@@ -1875,9 +1842,9 @@ const AddCRMForm = ({ show, setShowAddCRMForm }) => {
                                 </button>
                             </div>
                         </div>
-                        <hr style={{ borderTop: '2px solid #000000', width: '98%', marginTop: '-5px', marginBottom: '0.5rem', marginLeft: '29px' }} />
+                      
                         {isFirstContentVisible && (
-                            <div className="row ms-5">
+                            <div className="row ms-5 mt-1">
                                 <div className="col-xl-6">
                                     <ul className="form-list" style={{ listStyleType: 'none', padding: 0 }}>
                                         <li className="mb-3" id="field12">
@@ -2184,7 +2151,7 @@ const AddCRMForm = ({ show, setShowAddCRMForm }) => {
             case 6:
                 return (
                     <form className='text-center mt-3 p-3 pt-0'>
-                        <div>
+                        <div className='content-container'>
                             <div className="d-flex align-items-center justify-content-between  pb-0">
                                 <div>
                                     <button
@@ -2198,12 +2165,12 @@ const AddCRMForm = ({ show, setShowAddCRMForm }) => {
                                     </button>
                                 </div>
                             </div>
-                            <hr style={{ borderTop: '2px solid #000000', width: '98%', marginTop: '-5px', marginBottom: '0.5rem', marginLeft: '30px' }} />
+                            
                             {isFirstContentVisible && (
                                 <InsertTable />
                             )}
                         </div>
-                        <div>
+                        <div className='content-container'>
                             <div className="d-flex align-items-center justify-content-between pb-0">
                                 <div>
                                     <button
@@ -2217,12 +2184,12 @@ const AddCRMForm = ({ show, setShowAddCRMForm }) => {
                                     </button>
                                 </div>
                             </div>
-                            <hr style={{ borderTop: '2px solid #000000', width: '98%', marginTop: '-5px', marginBottom: '0.5rem', marginLeft: '30px' }} />
+                            
                             {isSecondContentVisible && (
                                 <UpdateTable />
                             )}
                         </div>
-                        <div>
+                        <div className='content-container'>
                             <div className="d-flex align-items-center justify-content-between pb-0">
                                 <div>
                                     <button
@@ -2236,12 +2203,12 @@ const AddCRMForm = ({ show, setShowAddCRMForm }) => {
                                     </button>
                                 </div>
                             </div>
-                            <hr style={{ borderTop: '2px solid #000000', width: '98%', marginTop: '-5px', marginBottom: '0.5rem', marginLeft: '30px' }} />
+                            
                             {isThirdContentVisible && (
                                 <DelTable />
                             )}
                         </div>
-                        <div>
+                        <div className='content-container'>
                             <div className="d-flex align-items-center justify-content-between pb-0">
                                 <div>
                                     <button
@@ -2255,7 +2222,7 @@ const AddCRMForm = ({ show, setShowAddCRMForm }) => {
                                     </button>
                                 </div>
                             </div>
-                            <hr style={{ borderTop: '2px solid #000000', width: '98%', marginTop: '-5px', marginBottom: '0.5rem', marginLeft: '30px' }} />
+                            
                             {isFourthContentVisible && (
                                 <AutoSyncTable />
                             )}
@@ -2269,9 +2236,9 @@ const AddCRMForm = ({ show, setShowAddCRMForm }) => {
     };
 
     return (
-        <Modal show={show} onHide={() => setShowModal(false)} className="custom-modal" size="xl"
+        <Modal show={show} onHide={() => setShowModal(false)} className="custom-modal" size="xl" style={{ overflowY: 'hidden' }}
             aria-labelledby="contained-modal-title-vcenter" centered backdrop="static">
-            <Modal.Header style={{ backgroundColor: '#22668d', color: '#fff', padding: '1rem' }}>
+            <Modal.Header style={{ background: 'linear-gradient(45deg, #1ed7d7, #099e9e)', color: '#fff', padding: '1rem' }}>
                 <Modal.Title id="contained-modal-title-vcenter">
                     NEW PERSONAL INFO
                 </Modal.Title>

@@ -52,7 +52,7 @@ const Topnavbar = ({ }) => {
 
   return (
    
-      <div className="App">
+      <div className="App fixed-top" >
         <header>
             {/* Left side - Logo */}
             <div className="logo_container">
